@@ -4,9 +4,10 @@ import pandas as pd
 import numpy as np 
 import math
 import csv
-# import keras as kp
-# from sklearn import svm
+import keras as kp
+from sklearn import svm
 from sklearn.naive_bayes import GaussianNB
+import cv2
 
 
 train_url = "http://s3.amazonaws.com/assets.datacamp.com/course/Kaggle/train.csv"
@@ -27,9 +28,9 @@ for val in your_list:
 		title=0
 	elif(mtitle[0]=='Mrs.'):
 		title=1
-	elif(mtitle[0]=='Miss.'):
+	elif(mtitle[0]=='Miss.'): 
 		title=2
-	else:
+	else:     # for the remaining category
 		title=3
 	Y.append([float(val[1])])
 	sex=0
@@ -64,7 +65,7 @@ with open('test.csv', 'rb') as f:
     your_list = list(reader)
 new_X=[]
 for val in your_list:
-	# Y.append([float(val[1])])
+	
 	title=0
 	mtitle=val[2].split(' ')
 	if(mtitle[0]=='Mr.' or mtitle[0]=='Capt' or mtitle[0]=='Don'or mtitle[0]=='Major'or mtitle[0]=='Col'):
@@ -100,7 +101,7 @@ for val in your_list:
 nX=np.array(new_X)
 
 clf=svm.SVC(kernel='linear',C=1.0,degree=2)
-clf.fit(X,Y)
+clf.fit(X,Y)   # fits the model
 
 result=clf.predict(nX).tolist()
 print result
