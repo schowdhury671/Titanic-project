@@ -13,40 +13,6 @@ train = pd.read_csv(train_url)
 test_url = "http://s3.amazonaws.com/assets.datacamp.com/course/Kaggle/test.csv"
 test=pd.read_csv(test_url)
 
-# # train["Child"] = 0
-# # train["Child"][train["Age"]<18]=1
-# # train["Child"][train["Age"]>=18]=0
-# # train["Age"]=train["Age"].fillna(train["Age"].median())
-
-# # train["Sex"][train["Sex"] == "male"] = 0
-# # train["Sex"][train["Sex"] == "female"] = 1
-# # # Impute the Embarked variable
-# # train["Embarked"] = train["Embarked"].fillna("S")
-
-# # # Convert the Embarked classes to integer form
-# # train["Embarked"][train["Embarked"] == "S"] = 0
-# # train["Embarked"][train["Embarked"] == "C"] = 1
-# # train["Embarked"][train["Embarked"] == "Q"] = 2
-
-# # print (train["Sex"],train["Pclass"],train["Child"],train["Age"],train["SibSp"],train["Parch"],train["Fare"],train["Embarked"])
-
-# X=[train["Sex"],train["Pclass"],train["Child"],train["Age"],train["SibSp"],train["Parch"],train["Fare"],train["Embarked"]]
-# Y=[train['Survived']]
-# dataset=np.loadtxt("train.csv",delimiter=",")
-# print dataset
-
-# model = Sequential()
-# model.add(Dense(12, input_dim=8, activation='relu'))
-# model.add(Dense(8, activation='relu'))
-# model.add(Dense(1, activation='sigmoid'))
-# # Compile model
-# model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-# # Fit the model
-# model.fit(X, Y, epochs=150, batch_size=10)
-# # evaluate the model
-# scores = model.evaluate(X, Y)
-# # print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
-
 
 
 with open('train.csv', 'rb') as f:
@@ -75,13 +41,13 @@ for val in your_list:
 
 # print Y
 model = Sequential()
-model.add(Dense(12, input_dim=7, activation='sigmoid'))
-model.add(Dense(8, activation='sigmoid'))
-model.add(Dense(8, activation='sigmoid'))
-model.add(Dense(8, activation='sigmoid'))
+model.add(Dense(18, input_dim=7, activation='sigmoid'))
+model.add(Dense(9, activation='sigmoid'))
+model.add(Dense(14, activation='sigmoid'))
+model.add(Dense(17, activation='sigmoid'))
 model.add(Dense(1, activation='sigmoid'))
 # Compile model
-model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 # Fit the model
 
 # evaluate the model
